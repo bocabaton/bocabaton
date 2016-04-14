@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="Collaboration_1qkx2or">
+    <bpmn:participant id="Participant_0s8ktpw" name="Prepare" processRef="Process_1" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_1a8c35e</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="UserTask_0clgjlp" name="Input Basic DevOps Environment">
+      <bpmn:incoming>SequenceFlow_1a8c35e</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_149n6p3</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="ServiceTask_1uknnfg" name="Deploy Git Repository">
+      <bpmn:incoming>SequenceFlow_149n6p3</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0mqos8z</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_19tc4xs" name="Deploy Gerrit Service">
+      <bpmn:incoming>SequenceFlow_0mqos8z</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0hgtp12</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_0sv4ev0" name="Deploy Jenkins Service">
+      <bpmn:incoming>SequenceFlow_0hgtp12</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0idh25k</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1pfce01">
+      <bpmn:incoming>SequenceFlow_0idh25k</bpmn:incoming>
+      <bpmn:messageEventDefinition />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1a8c35e" sourceRef="StartEvent_1" targetRef="UserTask_0clgjlp" />
+    <bpmn:sequenceFlow id="SequenceFlow_149n6p3" sourceRef="UserTask_0clgjlp" targetRef="ServiceTask_1uknnfg" />
+    <bpmn:sequenceFlow id="SequenceFlow_0mqos8z" sourceRef="ServiceTask_1uknnfg" targetRef="ServiceTask_19tc4xs" />
+    <bpmn:sequenceFlow id="SequenceFlow_0hgtp12" sourceRef="ServiceTask_19tc4xs" targetRef="ServiceTask_0sv4ev0" />
+    <bpmn:sequenceFlow id="SequenceFlow_0idh25k" sourceRef="ServiceTask_0sv4ev0" targetRef="IntermediateCatchEvent_1pfce01" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1qkx2or">
+      <bpmndi:BPMNShape id="Participant_0s8ktpw_di" bpmnElement="Participant_0s8ktpw">
+        <dc:Bounds x="123" y="60" width="942" height="157" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="146" y="138" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_0clgjlp_di" bpmnElement="UserTask_0clgjlp">
+        <dc:Bounds x="270" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1uknnfg_di" bpmnElement="ServiceTask_1uknnfg">
+        <dc:Bounds x="461" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_19tc4xs_di" bpmnElement="ServiceTask_19tc4xs">
+        <dc:Bounds x="652" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0sv4ev0_di" bpmnElement="ServiceTask_0sv4ev0">
+        <dc:Bounds x="846" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_1pfce01_di" bpmnElement="IntermediateCatchEvent_1pfce01">
+        <dc:Bounds x="1009" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="982" y="138" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1a8c35e_di" bpmnElement="SequenceFlow_1a8c35e">
+        <di:waypoint xsi:type="dc:Point" x="209" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="270" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="194.5" y="110" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_149n6p3_di" bpmnElement="SequenceFlow_149n6p3">
+        <di:waypoint xsi:type="dc:Point" x="370" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="461" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="370.5" y="110" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0mqos8z_di" bpmnElement="SequenceFlow_0mqos8z">
+        <di:waypoint xsi:type="dc:Point" x="561" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="652" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="561.5" y="110" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0hgtp12_di" bpmnElement="SequenceFlow_0hgtp12">
+        <di:waypoint xsi:type="dc:Point" x="752" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="846" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="754" y="110" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0idh25k_di" bpmnElement="SequenceFlow_0idh25k">
+        <di:waypoint xsi:type="dc:Point" x="946" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="1009" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="932.5" y="110" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
+
