@@ -34,8 +34,9 @@ Vagrant.configure("2") do |config|
   config.vm.network :private_network, ip: private_ip
 
 $provision_script = <<EOF
-yum install -y epel-release
+yum install -y epel-release gcc python-devel
 yum install -y python-pip
+
 pip install jeju --upgrade
 
 jeju -m https://raw.githubusercontent.com/bocabaton/bocabaton/master/docs/INSTALL_CentOS.md

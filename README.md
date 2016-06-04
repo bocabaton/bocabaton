@@ -23,7 +23,7 @@ The Demo Web
 
 ## Vagrant
 
-Prerequisites
+### Prerequisites
 =======
 
 Install VirtualBox/Vmware and Vagrant (version 1.8 or above)
@@ -50,6 +50,7 @@ vagrant up
 ```
 
 Installation takes about 15 min, depending on your internet connection.
+
 Once completed, open a browser and hit http://vagrant-bocabaton/admin/
 
 # Powered by PyEngine
